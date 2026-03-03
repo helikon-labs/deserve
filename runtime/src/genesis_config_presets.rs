@@ -94,24 +94,24 @@ fn get_devnet_genesis() -> Value {
 fn get_testnet_genesis() -> Value {
     // collator #1
     let collator_1_grandpa =
-        AccountId32::from_ss58check("16AYbHs4itBR8YHjkWwNaXa97PSmG197KqQ4VFc9U8BnVLv").unwrap();
+        AccountId32::from_ss58check("14EEB39SRBtxkUznRd2PvWt8bQknZVjaYzTHpdKVGzWUGTJj").unwrap();
     let collator_1_aura =
-        AuraId::from_ss58check("15SB1PxkgzYvGZpGQgV41wSvG8yEqwvthrL3JtnMHG9jEcrK").unwrap();
+        AuraId::from_ss58check("14KW2yMMp86vbeYjpE8RcRLHgdKudtPvJWnX47qCkJD1LF9p").unwrap();
     // collator #2
     let collator_2_grandpa =
-        AccountId32::from_ss58check("13FqsCdzLXw471uZNjEmh4EuoMfMt4HsTfVovb8aAFCX6M4S").unwrap();
+        AccountId32::from_ss58check("12pRjPyfAYvGgQXAgqvCha5N4bn9AMmZzt8LLmREeHzbnCCr").unwrap();
     let collator_2_aura =
-        AuraId::from_ss58check("14Q4H1184DakxsevWh8nxfVAzLT6JRuM76pjK82iryVo4NQz").unwrap();
+        AuraId::from_ss58check("19GRprbEoNgByfe1mLA3RtsJzhk6zbeETGCpmhocKqLrbGx").unwrap();
     // collator #3
     let collator_3_grandpa =
-        AccountId32::from_ss58check("12Rq4TYzrcRvF3GemM6dsWu8cvzbdSH4bif6ZkWiHboanfs8").unwrap();
+        AccountId32::from_ss58check("1AmCUFkZxVdnj5gSbmrkd6UvWKEYDcZvFN6mnrUk68tEfeh").unwrap();
     let collator_3_aura =
-        AuraId::from_ss58check("12zs9jsgABc9DFS2bojakSzKkLiCvg2Kwi4YiuXoiprpGQTW").unwrap();
+        AuraId::from_ss58check("123Uj7umokPhjTpkCNsbxedkwyevE7TzX6kdfzosgFEnu7vz").unwrap();
 
     let root =
-        AccountId::from_ss58check("16GGZkN7h6X2s3JCAhfJBj5ErPeLVpKSeoENXGFA8cFg5q34").unwrap();
+        AccountId::from_ss58check("12jCqPW6owEqPZ8hMvBZgMGHV1BjZ9nUfJZy2tZwYF6kkFaA").unwrap();
     let faucet =
-        AccountId::from_ss58check("121LpfMRyitLS26AMiZZL7hu9jcRrP8cW12Fc3ehVpCcjCoj").unwrap();
+        AccountId::from_ss58check("12nGoNoRE7eGTFGXPVaWWwNhCiAWG93C1Dm9PDzJU6zES3oa").unwrap();
     let developer =
         AccountId::from_ss58check("15fTH34bbKGMUjF1bLmTqxPYgpg481imThwhWcQfCyktyBzL").unwrap();
 
