@@ -1,3 +1,3 @@
 # Pallets
 
-Contains pallet implementations for the Zeta protocol.
+Contains pallet implementations for the DeServe protocol.

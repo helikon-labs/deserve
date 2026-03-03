@@ -1,14 +1,14 @@
 use polkadot_sdk::*;
 
+use deserve_runtime as runtime;
 use sc_chain_spec::{ChainSpecExtension, ChainSpecGroup};
 use sc_service::ChainType;
 use serde::{Deserialize, Serialize};
-use zeta_runtime as runtime;
 
 pub type ChainSpec = sc_service::GenericChainSpec<Extensions>;
 pub const ROCOCO_LOCAL: &str = "rococo-local";
 pub const PASEO: &str = "paseo";
-pub const TOKEN_SYMBOL: &str = "ZETA";
+pub const TOKEN_SYMBOL: &str = "DSRV";
 pub const TOKEN_DECIMALS: u32 = 9;
 pub const SS58_FORMAT: u32 = 0;
 
@@ -42,8 +42,8 @@ pub fn devnet_chain_spec() -> ChainSpec {
             relay_chain: ROCOCO_LOCAL.into(),
         },
     )
-    .with_name("Zeta Devnet")
-    .with_id(zeta_runtime::DEVNET_PRESET)
+    .with_name("DeServe Devnet")
+    .with_id(deserve_runtime::DEVNET_PRESET)
     .with_chain_type(ChainType::Development)
     .with_properties(get_chain_properties())
     .with_genesis_config_preset_name(sp_genesis_builder::DEV_RUNTIME_PRESET)
@@ -57,10 +57,10 @@ pub fn testnet_chain_spec() -> ChainSpec {
             relay_chain: PASEO.into(),
         },
     )
-    .with_name("Zeta Testnet")
-    .with_id(zeta_runtime::TESTNET_PRESET)
+    .with_name("DeServe Testnet")
+    .with_id(deserve_runtime::TESTNET_PRESET)
     .with_chain_type(ChainType::Live)
     .with_properties(get_chain_properties())
-    .with_genesis_config_preset_name(zeta_runtime::TESTNET_PRESET)
+    .with_genesis_config_preset_name(deserve_runtime::TESTNET_PRESET)
     .build()
 }

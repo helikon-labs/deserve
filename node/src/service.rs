@@ -4,7 +4,7 @@
 use std::{sync::Arc, time::Duration};
 
 // Local Runtime Types
-use zeta_runtime::{
+use deserve_runtime::{
     apis::RuntimeApi,
     opaque::{Block, Hash},
 };

@@ -7,7 +7,7 @@
 
 use std::sync::Arc;
 
-use zeta_runtime::{opaque::Block, AccountId, Balance, Nonce};
+use deserve_runtime::{opaque::Block, AccountId, Balance, Nonce};
 
 use polkadot_sdk::*;
 

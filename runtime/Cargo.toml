@@ -1,6 +1,6 @@
 [package]
-name = "zeta-runtime"
-description = "Zeta blockchain runtime."
+name = "deserve-runtime"
+description = "DeServe blockchain runtime."
 authors.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -22,7 +22,7 @@ cumulus-pallet-parachain-system.workspace = true
 docify = { workspace = true }
 hex-literal = { optional = true, workspace = true, default-features = true }
 log = { workspace = true }
-pallet-zeta.workspace = true
+pallet-deserve.workspace = true
 polkadot-sdk = { workspace = true, features = [
     "assets-common",
     "cumulus-pallet-aura-ext",
@@ -77,7 +77,7 @@ std = [
     "codec/std",
     "cumulus-pallet-parachain-system/std",
     "log/std",
-    "pallet-zeta/std",
+    "pallet-deserve/std",
     "polkadot-sdk/std",
     "scale-info/std",
     "serde_json/std",
@@ -86,12 +86,12 @@ std = [
 runtime-benchmarks = [
     "cumulus-pallet-parachain-system/runtime-benchmarks",
     "hex-literal",
-    "pallet-zeta/runtime-benchmarks",
+    "pallet-deserve/runtime-benchmarks",
     "polkadot-sdk/runtime-benchmarks",
 ]
 try-runtime = [
     "cumulus-pallet-parachain-system/try-runtime",
-    "pallet-zeta/try-runtime",
+    "pallet-deserve/try-runtime",
     "polkadot-sdk/try-runtime",
 ]
 

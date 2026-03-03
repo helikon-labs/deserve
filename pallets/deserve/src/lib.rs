@@ -1,4 +1,4 @@
-//! Zeta initial pallet.
+//! DeServe initial pallet.
 
 #![cfg_attr(not(feature = "std"), no_std)]
 

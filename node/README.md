@@ -1,4 +1,4 @@
-# Zeta Node Implementation
+# DeServe Node Implementation
 
 The node executable, whose primary purpose is to execute the [runtime](../runtime/README.md).
 

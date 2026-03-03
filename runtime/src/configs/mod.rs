@@ -43,8 +43,8 @@ use super::{
     MessageQueue, Nonce, OriginCaller, PalletInfo, ParachainSystem, Permill, Preimage, Runtime,
     RuntimeCall, RuntimeEvent, RuntimeFreezeReason, RuntimeHoldReason, RuntimeOrigin, RuntimeTask,
     Session, SessionKeys, System, WeightToFee, XcmpQueue, AVERAGE_ON_INITIALIZE_RATIO, CENTS, DAYS,
-    EXISTENTIAL_DEPOSIT, HOURS, MAXIMUM_BLOCK_WEIGHT, MICRO_ZETA, NORMAL_DISPATCH_RATIO,
-    SLOT_DURATION, VERSION, WEEK, ZETA,
+    DSRV, EXISTENTIAL_DEPOSIT, HOURS, MAXIMUM_BLOCK_WEIGHT, MICRO_DSRV, NORMAL_DISPATCH_RATIO,
+    SLOT_DURATION, VERSION, WEEK,
 };
 use codec::{Decode, DecodeWithMemTracking, Encode, MaxEncodedLen};
 use xcm_config::{RelayLocation, XcmOriginToTransactDispatchOrigin};
@@ -161,7 +161,7 @@ impl pallet_balances::Config for Runtime {
 
 parameter_types! {
     /// Relay Chain `TransactionByteFee` / 10
-    pub const TransactionByteFee: Balance = 10 * MICRO_ZETA;
+    pub const TransactionByteFee: Balance = 10 * MICRO_DSRV;
 }
 
 impl pallet_transaction_payment::Config for Runtime {
@@ -196,13 +196,13 @@ impl pallet_vesting::Config for Runtime {
 }
 
 parameter_types! {
-    pub const TreasuryPalletId: PalletId = PalletId(*b"zeta/tsy");
+    pub const TreasuryPalletId: PalletId = PalletId(*b"dsrv/tsy");
     pub TreasuryAccount: AccountId = pallet_treasury::Pallet::<Runtime>::account_id();
     pub const Burn: Permill = Permill::from_perthousand(0);
     pub const MaxApprovals: u32 = 100;
     pub const SpendPeriod: u32 = 1 * WEEK;
     pub const PayoutPeriod: u32 = 30 * DAYS;
-    pub const MaxSpend: Balance = 1_000_000 * ZETA;
+    pub const MaxSpend: Balance = 1_000_000 * DSRV;
 }
 
 impl pallet_treasury::Config for Runtime {
@@ -332,8 +332,8 @@ impl InstanceFilter<RuntimeCall> for ProxyType {
                     // authorship
                     | RuntimeCall::CollatorSelection(..)
                     | RuntimeCall::Session(..)
-                    // zeta
-                    | RuntimeCall::Zeta(..),
+                    // DeServe
+                    | RuntimeCall::DeServe(..),
             ),
         }
     }
@@ -445,7 +445,7 @@ impl pallet_message_queue::Config for Runtime {
 }
 
 /// The pallet-assets instance used for foreign assets received over XCM
-/// (e.g. PAS from relay chain, ZETA from sibling parachains on Asset Hub).
+/// (e.g. PAS from relay chain, DSRV from sibling parachains on Asset Hub).
 /// Asset IDs are XCM `Location` values, making the mapping between on-chain
 /// asset records and their cross-chain origin unambiguous.
 pub type ForeignAssetsInstance = pallet_assets::Instance1;
@@ -583,7 +583,7 @@ impl pallet_collator_selection::Config for Runtime {
 }
 
 /// Configure the pallet template in pallets/template.
-impl pallet_zeta::Config for Runtime {
+impl pallet_deserve::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
-    type WeightInfo = pallet_zeta::weights::SubstrateWeight<Runtime>;
+    type WeightInfo = pallet_deserve::weights::SubstrateWeight<Runtime>;
 }

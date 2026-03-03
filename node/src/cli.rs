@@ -51,13 +51,13 @@ pub enum Subcommand {
 
 const AFTER_HELP_EXAMPLE: &str = color_print::cstr!(
     r#"<bold><underline>Examples:</></>
-   <bold>zeta-node build-spec --disable-default-bootnode > plain-parachain-chainspec.json</>
+   <bold>deserve-node build-spec --disable-default-bootnode > plain-parachain-chainspec.json</>
            Export a chainspec for a local testnet in json format.
-   <bold>zeta-node --chain plain-parachain-chainspec.json --tmp -- --chain rococo-local</>
+   <bold>deserve-node --chain plain-parachain-chainspec.json --tmp -- --chain rococo-local</>
            Launch a full node with chain specification loaded from plain-parachain-chainspec.json.
-   <bold>zeta-node</>
+   <bold>deserve-node</>
            Launch a full node with default parachain <italic>local-testnet</> and relay chain <italic>rococo-locao</>.
-   <bold>zeta-node --collator</>
+   <bold>deserve-node --collator</>
            Launch a collator with default parachain <italic>local-testnet</> and relay chain <italic>rococo-local</>.
  "#
 );

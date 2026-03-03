@@ -6,13 +6,13 @@ const ACCOUNT_ID: u64 = 33;
 fn run_to_block(n: u64) {
     while runtime::System::block_number() < n {
         if runtime::System::block_number() > 0 {
-            runtime::Zeta::on_finalize(runtime::System::block_number());
+            runtime::DeServe::on_finalize(runtime::System::block_number());
             runtime::System::on_finalize(runtime::System::block_number());
         }
         runtime::System::reset_events();
         runtime::System::set_block_number(runtime::System::block_number() + 1);
         runtime::System::on_initialize(runtime::System::block_number());
-        runtime::Zeta::on_initialize(runtime::System::block_number());
+        runtime::DeServe::on_initialize(runtime::System::block_number());
     }
 }
 
@@ -22,7 +22,7 @@ fn store_value_works() {
         run_to_block(1);
         let value: u32 = 42;
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::store_value(origin, value,));
+        assert_ok!(runtime::DeServe::store_value(origin, value,));
         assert_eq!(Value::<runtime::Test>::get().map(|v| v.value), Some(value));
         runtime::System::assert_has_event(
             Event::ValueStored {
@@ -39,8 +39,8 @@ fn increment_value_works() {
     runtime::new_test_ext().execute_with(|| {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::store_value(origin.clone(), u32::MAX - 1,));
-        assert_ok!(runtime::Zeta::increment_value(origin,));
+        assert_ok!(runtime::DeServe::store_value(origin.clone(), u32::MAX - 1,));
+        assert_ok!(runtime::DeServe::increment_value(origin,));
         assert_eq!(
             Value::<runtime::Test>::get().map(|v| v.value),
             Some(u32::MAX)
@@ -61,7 +61,7 @@ fn correct_error_for_increment_none_value() {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
         assert_noop!(
-            runtime::Zeta::increment_value(origin),
+            runtime::DeServe::increment_value(origin),
             Error::<runtime::Test>::NoneValue,
         );
     });
@@ -72,10 +72,10 @@ fn correct_error_for_increment_overflow() {
     runtime::new_test_ext().execute_with(|| {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::store_value(origin.clone(), u32::MAX - 1,));
-        assert_ok!(runtime::Zeta::increment_value(origin.clone(),));
+        assert_ok!(runtime::DeServe::store_value(origin.clone(), u32::MAX - 1,));
+        assert_ok!(runtime::DeServe::increment_value(origin.clone(),));
         assert_noop!(
-            runtime::Zeta::increment_value(origin),
+            runtime::DeServe::increment_value(origin),
             Error::<runtime::Test>::StorageOverflow,
         );
     });
@@ -86,8 +86,8 @@ fn decrement_value_works() {
     runtime::new_test_ext().execute_with(|| {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::store_value(origin.clone(), 5,));
-        assert_ok!(runtime::Zeta::decrement_value(origin,));
+        assert_ok!(runtime::DeServe::store_value(origin.clone(), 5,));
+        assert_ok!(runtime::DeServe::decrement_value(origin,));
         assert_eq!(Value::<runtime::Test>::get().map(|v| v.value), Some(4));
         runtime::System::assert_has_event(
             Event::ValueDecremented {
@@ -105,7 +105,7 @@ fn correct_error_for_decrement_none_value() {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
         assert_noop!(
-            runtime::Zeta::decrement_value(origin),
+            runtime::DeServe::decrement_value(origin),
             Error::<runtime::Test>::NoneValue,
         );
     });
@@ -116,10 +116,10 @@ fn correct_error_for_decrement_overflow() {
     runtime::new_test_ext().execute_with(|| {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::store_value(origin.clone(), 1,));
-        assert_ok!(runtime::Zeta::decrement_value(origin.clone(),));
+        assert_ok!(runtime::DeServe::store_value(origin.clone(), 1,));
+        assert_ok!(runtime::DeServe::decrement_value(origin.clone(),));
         assert_noop!(
-            runtime::Zeta::decrement_value(origin),
+            runtime::DeServe::decrement_value(origin),
             Error::<runtime::Test>::StorageOverflow,
         );
     });
@@ -130,7 +130,7 @@ fn reset_value_works() {
     runtime::new_test_ext().execute_with(|| {
         run_to_block(1);
         let origin = runtime::RuntimeOrigin::signed(ACCOUNT_ID);
-        assert_ok!(runtime::Zeta::reset_value(origin.clone()));
+        assert_ok!(runtime::DeServe::reset_value(origin.clone()));
         assert_eq!(Value::<runtime::Test>::get().map(|v| v.value), Some(0));
         runtime::System::assert_has_event(Event::ValueReset { who: ACCOUNT_ID }.into());
     });

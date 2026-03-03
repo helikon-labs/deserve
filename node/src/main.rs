@@ -1,4 +1,4 @@
-//! Zeta Node CLI
+//! DeServe Node CLI
 
 #![warn(missing_docs)]
 

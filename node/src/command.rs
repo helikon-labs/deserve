@@ -1,6 +1,7 @@
 use polkadot_sdk::*;
 
 use cumulus_client_service::storage_proof_size::HostFunctions as ReclaimHostFunctions;
+use deserve_runtime::Block;
 use frame_benchmarking_cli::{BenchmarkCmd, SUBSTRATE_REFERENCE_HARDWARE};
 use log::info;
 use sc_cli::{
@@ -8,7 +9,6 @@ use sc_cli::{
     NetworkParams, Result, RpcEndpoint, SharedParams, SubstrateCli,
 };
 use sc_service::config::{BasePath, PrometheusConfig};
-use zeta_runtime::Block;
 
 use crate::{
     chain_spec,
@@ -18,7 +18,7 @@ use crate::{
 
 impl SubstrateCli for Cli {
     fn impl_name() -> String {
-        "helikon-zeta".into()
+        "helikon-deserve".into()
     }
 
     fn impl_version() -> String {
@@ -27,7 +27,7 @@ impl SubstrateCli for Cli {
 
     fn description() -> String {
         format!(
-            "Zeta Node\n\nThe command-line arguments provided first will be \
+            "DeServe Node\n\nThe command-line arguments provided first will be \
 		passed to the parachain node, while the arguments provided after -- will be passed \
 		to the relay chain node.\n\n\
 		{} <parachain-args> -- <relay-chain-args>",
@@ -40,7 +40,7 @@ impl SubstrateCli for Cli {
     }
 
     fn support_url() -> String {
-        "https://github.com/helikon-labs/zeta-node/issues/new".into()
+        "https://github.com/helikon-labs/deserve/issues/new".into()
     }
 
     fn copyright_start_year() -> i32 {
@@ -54,8 +54,8 @@ impl SubstrateCli for Cli {
             | "devnet"
             | sp_genesis_builder::DEV_RUNTIME_PRESET
             | sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET
-            | zeta_runtime::DEVNET_PRESET => Box::new(chain_spec::devnet_chain_spec()),
-            "test" | "testnet" | zeta_runtime::TESTNET_PRESET => {
+            | deserve_runtime::DEVNET_PRESET => Box::new(chain_spec::devnet_chain_spec()),
+            "test" | "testnet" | deserve_runtime::TESTNET_PRESET => {
                 Box::new(chain_spec::testnet_chain_spec())
             }
             path => Box::new(chain_spec::ChainSpec::from_json_file(
@@ -76,7 +76,7 @@ impl SubstrateCli for RelayChainCli {
 
     fn description() -> String {
         format!(
-            "Zeta Node\n\nThe command-line arguments provided first will be \
+            "DeServe Node\n\nThe command-line arguments provided first will be \
 		passed to the parachain node, while the arguments provided after -- will be passed \
 		to the relay chain node.\n\n\
 		{} <parachain-args> -- <relay-chain-args>",

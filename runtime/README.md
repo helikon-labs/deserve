@@ -1,3 +1,3 @@
-# Zeta Runtime
+# DeServe Runtime
 
-Zeta protocol parachain runtime implementation.
+DeServe protocol parachain runtime implementation.

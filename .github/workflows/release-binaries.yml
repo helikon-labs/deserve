@@ -21,5 +21,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            target/production/zeta-node
-            target/production/wbuild/zeta-runtime/zeta_runtime.compact.compressed.wasm
+            target/production/deserve-node
+            target/production/wbuild/deserve-runtime/deserve_runtime.compact.compressed.wasm

@@ -19,14 +19,14 @@ ws_port = 9966
 
 [[parachains]]
 id = 5142
-chain = "zeta_devnet"
+chain = "deserve_devnet"
 
 [[parachains.collators]]
 name = "dave"
 ws_port = 9988
-command = "../target/release/zeta-node"
+command = "../target/release/deserve-node"
 
 [[parachains.collators]]
 name = "eve"
 ws_port = 9999
-command = "../target/release/zeta-node"
+command = "../target/release/deserve-node"

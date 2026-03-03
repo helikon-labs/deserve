@@ -9,5 +9,5 @@ polkadot_sdk::frame_benchmarking::define_benchmarks!(
     [cumulus_pallet_parachain_system, ParachainSystem]
     [cumulus_pallet_xcmp_queue, XcmpQueue]
     [cumulus_pallet_weight_reclaim, WeightReclaim]
-    [pallet_zeta, Zeta]
+    [pallet_deserve, DeServe]
 );

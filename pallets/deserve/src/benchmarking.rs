@@ -1,4 +1,4 @@
-//! Benchmarking setup for the Zeta pallet.
+//! Benchmarking setup for the DeServe pallet.
 use super::*;
 use frame::{deps::frame_benchmarking::v2::*, prelude::*};
 

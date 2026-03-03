@@ -1,4 +1,4 @@
-# Zeta Protocol Implementation
+# DeServe Protocol Implementation
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@
 
 ## Intro
 
-Zeta Protocol [parachain](https://wiki.polkadot.network/docs/learn-parachains) implementation in Rust,
+DeServe Protocol [parachain](https://wiki.polkadot.network/docs/learn-parachains) implementation in Rust,
 built on the [Polkadot SDK Parachain Template](https://github.com/paritytech/polkadot-sdk-parachain-template).
 
 ## Code Structure
@@ -39,8 +39,8 @@ This implementation consists of:
 Fetch code:
 
 ```sh
-git clone https://github.com/helikon-labs/zeta-node.git
-cd zeta-node
+git clone https://github.com/helikon-labs/deserve.git
+cd deserve
 ```
 
 ## Starting a Development Chain
@@ -59,7 +59,7 @@ cargo install polkadot-omni-node
 
 > For more advanced options, please see the installation section at [`crates.io/omni-node`](https://crates.io/crates/polkadot-omni-node).
 
-#### Build `zeta-runtime`
+#### Build `deserve-runtime`
 
 ```sh
 cargo build --profile production
@@ -77,7 +77,7 @@ cargo install staging-chain-spec-builder
 
 ```sh
 chain-spec-builder create --relay-chain "rococo-local" --runtime \
-    target/release/wbuild/zeta-runtime/zeta_runtime.wasm named-preset development
+    target/release/wbuild/deserve-runtime/deserve_runtime.wasm named-preset development
 ```
 
 **Note**: the `relay-chain` flag is required by Omni Node. The `relay-chain` value is set in accordance
@@ -141,7 +141,7 @@ zombienet --provider native spawn zombienet-omni-node.toml
 As mentioned in the `Code Structure` section, the `node` crate is optionally compiled and it is an alternative
 to `Omni Node`. Similarly, it requires setting up a relay chain, and we'll use `zombienet` once more.
 
-#### Install `zeta-node`
+#### Install `deserve-node`
 
 ```sh
 cargo install --path node --locked
@@ -191,12 +191,12 @@ To use `chopsticks`, please install the latest version according to the installa
 
 ### Build a raw chain spec
 
-Build the `zeta-runtime` as mentioned before in this guide and use `chain-spec-builder`
+Build the `deserve-runtime` as mentioned before in this guide and use `chain-spec-builder`
 again but this time by passing `--raw-storage` flag:
 
 ```sh
 chain-spec-builder create --raw-storage --relay-chain "rococo-local" --runtime \
-    target/release/wbuild/zeta-runtime/zeta_runtime.wasm named-preset development
+    target/release/wbuild/deserve-runtime/deserve_runtime.wasm named-preset development
 ```
 
 ### Start `chopsticks` with the chain spec
@@ -207,7 +207,7 @@ npx @acala-network/chopsticks@latest --chain-spec <path/to/chain_spec.json>
 
 ### Alternatives
 
-`OmniNode` can be still used for runtime development if using the `--dev` flag, while `zeta-node` doesn't
+`OmniNode` can be still used for runtime development if using the `--dev` flag, while `deserve-node` doesn't
 support it at this moment. It can still be used to test a runtime in a full setup where it is started alongside a
 relay chain network.
 

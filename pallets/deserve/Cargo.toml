@@ -1,6 +1,6 @@
 [package]
-name = "pallet-zeta"
-description = "Zeta pallet for defining custom runtime logic."
+name = "pallet-deserve"
+description = "DeServe main pallet that defines custom runtime logic."
 authors.workspace = true
 edition.workspace = true
 homepage.workspace = true
