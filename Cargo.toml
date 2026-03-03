@@ -65,7 +65,7 @@ hex-literal = { version = "1.1.0", default-features = false }
 jsonrpsee = { version = "0.24.10" }
 log = { version = "0.4.29", default-features = false }
 pallet-deserve = { path = "./pallets/deserve", default-features = false }
-polkadot-sdk = { version = "2512.1.0", default-features = false }
+polkadot-sdk = { version = "2512.3.3", default-features = false }
 prometheus-endpoint = { version = "0.17.7", default-features = false, package = "substrate-prometheus-endpoint" }
 scale-info = { version = "2.11.6", default-features = false }
 serde = { version = "1.0.228", default-features = false }
