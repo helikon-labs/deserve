@@ -1,7 +1,7 @@
 use crate::{
     AccountId, Balance, BalancesConfig, CollatorSelectionConfig, ParachainInfoConfig,
-    PolkadotXcmConfig, RuntimeGenesisConfig, SessionConfig, SessionKeys, SudoConfig,
-    DSRV as BALANCE_UNIT,
+    PolkadotXcmConfig, RuntimeGenesisConfig, SessionConfig, SessionKeys, SudoConfig, DSRV,
+    MILLION_DSRV,
 };
 
 use alloc::{vec, vec::Vec};
@@ -71,7 +71,7 @@ fn get_devnet_genesis() -> Value {
     let balances = Sr25519Keyring::well_known()
         .map(|k| (k.to_account_id(), 1u128 << 60))
         .collect::<Vec<_>>();
-    let authority_candidacy_bond = 10_000 * BALANCE_UNIT;
+    let authority_candidacy_bond = 10_000 * DSRV;
     let authorities = vec![
         (
             Sr25519Keyring::Alice.to_account_id(),
@@ -93,20 +93,20 @@ fn get_devnet_genesis() -> Value {
 
 fn get_testnet_genesis() -> Value {
     // collator #1
-    let collator_1_grandpa =
-        AccountId32::from_ss58check("14EEB39SRBtxkUznRd2PvWt8bQknZVjaYzTHpdKVGzWUGTJj").unwrap();
     let collator_1_aura =
         AuraId::from_ss58check("14KW2yMMp86vbeYjpE8RcRLHgdKudtPvJWnX47qCkJD1LF9p").unwrap();
+    let collator_1_grandpa =
+        AccountId32::from_ss58check("14EEB39SRBtxkUznRd2PvWt8bQknZVjaYzTHpdKVGzWUGTJj").unwrap();
     // collator #2
-    let collator_2_grandpa =
-        AccountId32::from_ss58check("12pRjPyfAYvGgQXAgqvCha5N4bn9AMmZzt8LLmREeHzbnCCr").unwrap();
     let collator_2_aura =
         AuraId::from_ss58check("19GRprbEoNgByfe1mLA3RtsJzhk6zbeETGCpmhocKqLrbGx").unwrap();
+    let collator_2_grandpa =
+        AccountId32::from_ss58check("12pRjPyfAYvGgQXAgqvCha5N4bn9AMmZzt8LLmREeHzbnCCr").unwrap();
     // collator #3
-    let collator_3_grandpa =
-        AccountId32::from_ss58check("1AmCUFkZxVdnj5gSbmrkd6UvWKEYDcZvFN6mnrUk68tEfeh").unwrap();
     let collator_3_aura =
         AuraId::from_ss58check("123Uj7umokPhjTpkCNsbxedkwyevE7TzX6kdfzosgFEnu7vz").unwrap();
+    let collator_3_grandpa =
+        AccountId32::from_ss58check("1AmCUFkZxVdnj5gSbmrkd6UvWKEYDcZvFN6mnrUk68tEfeh").unwrap();
 
     let root =
         AccountId::from_ss58check("12jCqPW6owEqPZ8hMvBZgMGHV1BjZ9nUfJZy2tZwYF6kkFaA").unwrap();
@@ -115,16 +115,15 @@ fn get_testnet_genesis() -> Value {
     let developer =
         AccountId::from_ss58check("15fTH34bbKGMUjF1bLmTqxPYgpg481imThwhWcQfCyktyBzL").unwrap();
 
-    let million_unit = 1_000_000 * BALANCE_UNIT;
     let balances = vec![
-        (root.clone(), 100 * million_unit),
-        (faucet, 1_000 * million_unit),
-        (developer, million_unit),
-        (collator_1_grandpa.clone(), million_unit),
-        (collator_2_grandpa.clone(), million_unit),
-        (collator_3_grandpa.clone(), million_unit),
+        (root.clone(), 100 * MILLION_DSRV),
+        (faucet, 1_000 * MILLION_DSRV),
+        (developer, MILLION_DSRV),
+        (collator_1_grandpa.clone(), MILLION_DSRV),
+        (collator_2_grandpa.clone(), MILLION_DSRV),
+        (collator_3_grandpa.clone(), MILLION_DSRV),
     ];
-    let authority_candidacy_bond = 10_000 * BALANCE_UNIT;
+    let authority_candidacy_bond = 10_000 * DSRV;
 
     let authorities = vec![
         (collator_1_grandpa, collator_1_aura),

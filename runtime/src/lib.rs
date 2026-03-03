@@ -199,6 +199,7 @@ pub const WEEK: BlockNumber = DAYS * 7;
 // DSRV = the base number of indivisible units for balances
 pub const DSRV: Balance = 1_000_000_000;
 pub const CENTS: Balance = DSRV / 100;
+pub const MILLION_DSRV: Balance = 1_000_000 * DSRV;
 pub const MILLI_DSRV: Balance = 1_000_000;
 pub const MICRO_DSRV: Balance = 1_000;
 
