@@ -20,6 +20,7 @@ workspace = true
 codec = { features = ["derive"], workspace = true }
 cumulus-pallet-parachain-system.workspace = true
 docify = { workspace = true }
+enumflags2 = { workspace = true }
 hex-literal = { optional = true, workspace = true, default-features = true }
 log = { workspace = true }
 pallet-deserve.workspace = true
@@ -38,6 +39,7 @@ polkadot-sdk = { workspace = true, features = [
     "pallet-authorship",
     "pallet-balances",
     "pallet-collator-selection",
+    "pallet-identity",
     "pallet-message-queue",
     "pallet-multisig",
     "pallet-preimage",

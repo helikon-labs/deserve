@@ -1,3 +1,4 @@
+mod identity_info;
 mod xcm_config;
 
 use polkadot_sdk::{staging_parachain_info as parachain_info, staging_xcm as xcm, *};
@@ -42,9 +43,9 @@ use super::{
     AccountId, Aura, Balance, Balances, BlakeTwo256, Block, CollatorSelection, ConsensusHook, Hash,
     MessageQueue, Nonce, OriginCaller, PalletInfo, ParachainSystem, Permill, Preimage, Runtime,
     RuntimeCall, RuntimeEvent, RuntimeFreezeReason, RuntimeHoldReason, RuntimeOrigin, RuntimeTask,
-    Session, SessionKeys, System, WeightToFee, XcmpQueue, AVERAGE_ON_INITIALIZE_RATIO, CENTS, DAYS,
-    DSRV, EXISTENTIAL_DEPOSIT, HOURS, MAXIMUM_BLOCK_WEIGHT, MICRO_DSRV, NORMAL_DISPATCH_RATIO,
-    SLOT_DURATION, VERSION, WEEK,
+    Session, SessionKeys, Signature, System, Treasury, Verify, WeightToFee, XcmpQueue,
+    AVERAGE_ON_INITIALIZE_RATIO, CENTS, DAYS, DSRV, EXISTENTIAL_DEPOSIT, HOURS,
+    MAXIMUM_BLOCK_WEIGHT, MICRO_DSRV, NORMAL_DISPATCH_RATIO, SLOT_DURATION, VERSION, WEEK,
 };
 use codec::{Decode, DecodeWithMemTracking, Encode, MaxEncodedLen};
 use xcm_config::{RelayLocation, XcmOriginToTransactDispatchOrigin};
@@ -353,6 +354,45 @@ impl pallet_proxy::Config for Runtime {
     type AnnouncementDepositBase = AnnouncementDepositBase;
     type AnnouncementDepositFactor = AnnouncementDepositFactor;
     type BlockNumberProvider = RelaychainDataProvider<Runtime>;
+}
+
+parameter_types! {
+    pub const BasicDeposit: Balance = super::deposit(1, 17);
+    pub const ByteDeposit: Balance = super::deposit(0, 1);
+    pub const UsernameDeposit: Balance = super::deposit(0, 32);
+    pub const SubAccountDeposit: Balance = super::deposit(1, 53);
+    pub const MaxSubAccounts: u32 = 100;
+    pub const MaxAdditionalFields: u32 = 100;
+    pub const MaxRegistrars: u32 = 20;
+    pub const PendingUserNameExpiration: u32 = 7 * DAYS;
+    pub const UsernameGracePeriod: u32 = 3 * DAYS;
+    pub const MaxSuffixLength: u32 = 7;
+    pub const MaxUsernameLength: u32 = 32;
+}
+
+impl pallet_identity::Config for Runtime {
+    type RuntimeEvent = RuntimeEvent;
+    type Currency = Balances;
+    type BasicDeposit = BasicDeposit;
+    type ByteDeposit = ByteDeposit;
+    type UsernameDeposit = UsernameDeposit;
+    type SubAccountDeposit = SubAccountDeposit;
+    type MaxSubAccounts = MaxSubAccounts;
+    type IdentityInformation = identity_info::IdentityInformation;
+    type MaxRegistrars = MaxRegistrars;
+    type Slashed = Treasury;
+    type ForceOrigin = EnsureRoot<Self::AccountId>;
+    type RegistrarOrigin = EnsureRoot<Self::AccountId>;
+    type OffchainSignature = Signature;
+    type SigningPublicKey = <Signature as Verify>::Signer;
+    type UsernameAuthorityOrigin = EnsureRoot<Self::AccountId>;
+    type PendingUsernameExpiration = PendingUserNameExpiration;
+    type UsernameGracePeriod = UsernameGracePeriod;
+    type MaxSuffixLength = MaxSuffixLength;
+    type MaxUsernameLength = MaxUsernameLength;
+    type WeightInfo = pallet_identity::weights::SubstrateWeight<Runtime>;
+    #[cfg(feature = "runtime-benchmarks")]
+    type BenchmarkHelper = ();
 }
 
 parameter_types! {

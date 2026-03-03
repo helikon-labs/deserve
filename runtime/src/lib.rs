@@ -313,6 +313,8 @@ mod runtime {
     pub type Multisig = pallet_multisig;
     #[runtime::pallet_index(34)]
     pub type Proxy = pallet_proxy;
+    #[runtime::pallet_index(35)]
+    pub type Identity = pallet_identity;
 
     // authorship
     #[runtime::pallet_index(40)]

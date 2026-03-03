@@ -4055,6 +4055,7 @@ version = "0.1.1"
 dependencies = [
  "cumulus-pallet-parachain-system",
  "docify 0.4.1",
+ "enumflags2",
  "hex-literal 1.1.0",
  "log",
  "pallet-deserve",
