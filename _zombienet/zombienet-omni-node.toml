@@ -18,7 +18,7 @@ validator = true
 ws_port = 9966
 
 [[parachains]]
-id = 5148
+id = 5150
 chain_spec_path = "../_chainspec/deserve-devnet-plain.json"
 
 [[parachains.collators]]
