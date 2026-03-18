@@ -62,7 +62,7 @@ enumflags2 = { version = "0.7.12" }
 frame = { version = "0.14.0", default-features = false, package = "polkadot-sdk-frame" }
 futures = { version = "0.3.32" }
 hex-literal = { version = "1.1.0", default-features = false }
-jsonrpsee = { version = "0.24.10" }
+jsonrpsee = { version = "0.26.0" }
 log = { version = "0.4.29", default-features = false }
 pallet-deserve = { path = "./pallets/deserve", default-features = false }
 polkadot-sdk = { version = "2512.3.3", default-features = false }
