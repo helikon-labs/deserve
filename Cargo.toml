@@ -55,7 +55,7 @@ zero-prefixed-literal = { level = "allow", priority = 2 } # 00_1000_000
 clap = { version = "4.5.60" }
 codec = { version = "3.7.5", default-features = false, package = "parity-scale-codec" }
 color-print = { version = "0.3.7" }
-cumulus-pallet-parachain-system = { version = "0.25.0", default-features = false }
+cumulus-pallet-parachain-system = { version = "0.25.1", default-features = false }
 deserve-runtime = { path = "./runtime", default-features = false }
 docify = { version = "0.4.1" }
 enumflags2 = { version = "0.7.12" }
