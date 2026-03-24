@@ -3262,9 +3262,9 @@ dependencies = [
 
 [[package]]
 name = "cumulus-pallet-parachain-system"
-version = "0.25.0"
+version = "0.25.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "25d8efadc9b4ad035b7fb55c768ce3d68941c1d7ef38840fa61624d34878e5e3"
+checksum = "139fdbf040a8f512ec21af576c48a7311a3f76a6cf19c7214f8c951f090de6ed"
 dependencies = [
  "array-bytes 6.2.3",
  "bytes",
