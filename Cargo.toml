@@ -71,7 +71,7 @@ scale-info = { version = "2.11.6", default-features = false }
 serde = { version = "1.0.228", default-features = false }
 serde_json = { version = "1.0.149", default-features = false }
 smallvec = { version = "1.15.1", default-features = false }
-substrate-wasm-builder = { version = "31.1.0", default-features = false }
+substrate-wasm-builder = { version = "32.0.0", default-features = false }
 
 [profile.release]
 opt-level = 3
